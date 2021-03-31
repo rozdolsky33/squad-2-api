@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: squad2-api
+  labels:
+    app: squad2-api
+spec:
+  selector:
+    matchLabels:
+      app: squad2-api
+  template:
+    metadata:
+      labels:
+        app: squad2-api
+    spec:
+      containers:
+        - name: squad2-api
+          image: image-registry.openshift-image-registry.svc:5000/tekton-argocd-squad2-api/app:16fc615
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: squad2-api
+  name: squad2-api
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector:
+    app: squad2-api
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: squad2-api
+  name: squad2-api
+spec:
+  port:
+    targetPort: http
+  to:
+    kind: Service
+    name: squad2-api
+    weight: 100
