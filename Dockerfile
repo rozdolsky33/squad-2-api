@@ -1,10 +1,13 @@
-FROM openjdk:8-jdk-alpine
+# Build stage - could use maven or our image
+FROM maven:3.3-jdk-8 as builder
 
-VOLUME /tmp
+COPY . .
+RUN mvn clean install
 
-COPY pom.xml .
-COPY src src
-RUN mvn clean package
-COPY target/squad2-api-0.0.1-SNAPSHOT.jar squad2-api.jar
+FROM openliberty/open-liberty:springBoot2-ubi-min as staging
 
-ENTRYPOINT ["java", "-jar","/squad2-api.jar"]
+COPY --chown=1001:0 --from=builder /target/squad2-api-0.0.1-SNAPSHOT.jar /config/app.jar
+RUN springBootUtility thin \
+    --sourceAppPath=/config/app.jar \clear
+    --targetThinAppPath=/config/dropins/spring/thinClinic.jar \
+    --targetLibCachePath=/opt/ol/wlp/usr/shared/resources/lib.index.cache
