@@ -3,6 +3,8 @@ package com.sq2.api.ententies;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.List;
 
 @Entity
 public class UserEntity {
@@ -11,6 +13,8 @@ public class UserEntity {
     private int id;
     private String firstName;
     private String lastname;
+    @ManyToMany
+    private List<Items> groceryItems;
 
     public int getId() {
         return id;
@@ -31,5 +35,13 @@ public class UserEntity {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public List<Items> getItems() {
+        return groceryItems;
+    }
+
+    public void setItems(Items groceryItems) {
+        this.groceryItems.add(groceryItems);
     }
 }
