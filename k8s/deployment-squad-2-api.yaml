@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: api-app
-          image: squad2
+          image: rozdolsky33/squad2
           ports:
             - containerPort: 8080
 ---
@@ -23,8 +23,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: service-suad2-api
-  name: service-suad2-api
+    app: service-squad2-api
+  name: service-squad2-api
 spec:
   type: NodePort
   ports:
