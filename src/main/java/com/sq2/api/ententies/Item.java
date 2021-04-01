@@ -4,15 +4,30 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
-public class Items {
+public class Item {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    private String userName;
     private String itemName;
+    private Date targetDate;
     private int quantity;
+
+
+    public Item() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getItemName() {
         return itemName;
@@ -28,5 +43,21 @@ public class Items {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Date getTargetDate() {
+        return targetDate;
+    }
+
+    public void setTargetDate(Date targetDate) {
+        this.targetDate = targetDate;
     }
 }

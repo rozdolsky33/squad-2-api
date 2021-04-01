@@ -29,7 +29,7 @@ public class SwaggerConfig {
 
     ApiInfo apiInfo = new ApiInfo(
             "Grocery RESTful Web Service documentation",
-            "This pages documents Grocery RESTful Web Service endpoints",
+            "This pages documents Cloud-Native Garage Method Grocery Project RESTful Web Service endpoints",
             "1.0",
             "http://www.arwest.com/service.html",
             contact,
