@@ -36,7 +36,7 @@ public class GroceryListController {
     }
 
     @PutMapping(path = "/{id}", consumes = {MediaType.APPLICATION_JSON_VALUE}, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?>updateItemOnTheList(@RequestParam String id, @RequestBody UpdateItemRequestModel updateItemRequest){
+    public ResponseEntity<?>updateItemOnTheList(@PathVariable String id, @RequestBody UpdateItemRequestModel updateItemRequest){
 
         ModelMapper modelMapper = new ModelMapper();
         Item updateItem = modelMapper.map(updateItemRequest, Item.class);
