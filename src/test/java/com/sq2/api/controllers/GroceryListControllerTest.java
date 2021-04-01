@@ -115,7 +115,9 @@ class GroceryListControllerTest {
         when(itemsService.getAllItems()).thenReturn(myTestList);
 
         this.mockMvc.perform(get(baseUri).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
+                .andExpect(jsonPath("$.size()", is(2)));
 
     }
 
