@@ -118,7 +118,6 @@ class GroceryListControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
                 .andExpect(jsonPath("$.size()", is(2)));
-
     }
 
     private ItemRequestModel createItem(){
