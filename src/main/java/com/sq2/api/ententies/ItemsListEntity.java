@@ -22,6 +22,7 @@ public class ItemsListEntity {
     @UpdateTimestamp
     private Date modifiedDate;
     private boolean active;
+    private String unit;
     @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "item_entity_id")
@@ -79,5 +80,13 @@ public class ItemsListEntity {
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

@@ -8,6 +8,7 @@ public class ItemRequestModel {
     private String itemName;
     private Date cratedDated;
     private Date modifiedDat;
+    private String unit;
     private int quantity;
 
     public String getUserName() {
@@ -48,5 +49,13 @@ public class ItemRequestModel {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

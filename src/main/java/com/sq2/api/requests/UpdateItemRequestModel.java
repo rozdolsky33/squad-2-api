@@ -10,6 +10,7 @@ public class UpdateItemRequestModel {
     private Date cratedDated;
     private Date modifiedDat;
     private int quantity;
+    private String unit;
 
     public String getUserName() {
         return userName;
@@ -49,5 +50,13 @@ public class UpdateItemRequestModel {
 
     public void setModifiedDat(Date modifiedDat) {
         this.modifiedDat = modifiedDat;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }

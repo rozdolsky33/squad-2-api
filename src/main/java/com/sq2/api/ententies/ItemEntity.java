@@ -16,6 +16,7 @@ public class ItemEntity {
     private String itemName;
     private Date cratedDated;
     private Date modifiedDat;
+    private String unit;
     private int quantity;
 
 
@@ -68,5 +69,13 @@ public class ItemEntity {
 
     public void setModifiedDat(Date modifiedDat) {
         this.modifiedDat = modifiedDat;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 }
