@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: squad2-api
-        image: image-registry.openshift-image-registry.svc:5000/tekton-argocd-squad2-api/app:9578a00
+        image: image-registry.openshift-image-registry.svc:5000/tekton-argocd-squad2-api/app:6f473b2
         ports:
         - containerPort: 8080
