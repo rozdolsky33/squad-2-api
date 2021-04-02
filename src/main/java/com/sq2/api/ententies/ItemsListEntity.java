@@ -21,6 +21,7 @@ public class ItemsListEntity {
     private Date cratedDated;
     @UpdateTimestamp
     private Date modifiedDate;
+    private boolean active;
     @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "item_entity_id")
@@ -70,5 +71,13 @@ public class ItemsListEntity {
     }
     public void removeItemFromTheList(ItemEntity item){
         this.itemsList.remove(item);
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 }

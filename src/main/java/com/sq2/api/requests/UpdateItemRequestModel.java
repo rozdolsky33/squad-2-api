@@ -1,12 +1,14 @@
 package com.sq2.api.requests;
 
+
 import java.util.Date;
 
 public class UpdateItemRequestModel {
 
     private String userName;
     private String itemName;
-    private Date targetDate;
+    private Date cratedDated;
+    private Date modifiedDat;
     private int quantity;
 
     public String getUserName() {
@@ -25,19 +27,27 @@ public class UpdateItemRequestModel {
         this.itemName = itemName;
     }
 
-    public Date getTargetDate() {
-        return targetDate;
-    }
-
-    public void setTargetDate(Date targetDate) {
-        this.targetDate = targetDate;
-    }
-
     public int getQuantity() {
         return quantity;
     }
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public Date getCratedDated() {
+        return cratedDated;
+    }
+
+    public void setCratedDated(Date cratedDated) {
+        this.cratedDated = cratedDated;
+    }
+
+    public Date getModifiedDat() {
+        return modifiedDat;
+    }
+
+    public void setModifiedDat(Date modifiedDat) {
+        this.modifiedDat = modifiedDat;
     }
 }
