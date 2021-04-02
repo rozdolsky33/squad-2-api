@@ -34,7 +34,7 @@ public class ItemsServiceImpl implements ItemsService {
         ItemEntity itemEntityToUpdate = itemsRepository.findById(id).get();
         itemEntityToUpdate.setItemName(itemEntity.getItemName());
         itemEntityToUpdate.setQuantity(itemEntity.getQuantity());
-        itemEntityToUpdate.setTargetDate(itemEntity.getTargetDate());
+        itemEntityToUpdate.setModifiedDat(itemEntity.getModifiedDat());
         itemEntityToUpdate.setUserName(itemEntity.getUserName());
 
         return itemsRepository.save(itemEntityToUpdate);

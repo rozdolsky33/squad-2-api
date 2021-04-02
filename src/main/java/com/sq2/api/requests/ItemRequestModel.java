@@ -6,7 +6,8 @@ public class ItemRequestModel {
 
     private String userName;
     private String itemName;
-    private Date targetDate;
+    private Date cratedDated;
+    private Date modifiedDat;
     private int quantity;
 
     public String getUserName() {
@@ -25,12 +26,20 @@ public class ItemRequestModel {
         this.itemName = itemName;
     }
 
-    public Date getTargetDate() {
-        return targetDate;
+    public Date getCratedDated() {
+        return cratedDated;
     }
 
-    public void setTargetDate(Date targetDate) {
-        this.targetDate = targetDate;
+    public void setCratedDated(Date cratedDated) {
+        this.cratedDated = cratedDated;
+    }
+
+    public Date getModifiedDat() {
+        return modifiedDat;
+    }
+
+    public void setModifiedDat(Date modifiedDat) {
+        this.modifiedDat = modifiedDat;
     }
 
     public int getQuantity() {

@@ -14,7 +14,8 @@ public class ItemEntity {
     private int id;
     private String userName;
     private String itemName;
-    private Date targetDate;
+    private Date cratedDated;
+    private Date modifiedDat;
     private int quantity;
 
 
@@ -53,11 +54,19 @@ public class ItemEntity {
         this.userName = userName;
     }
 
-    public Date getTargetDate() {
-        return targetDate;
+    public Date getCratedDated() {
+        return cratedDated;
     }
 
-    public void setTargetDate(Date targetDate) {
-        this.targetDate = targetDate;
+    public void setCratedDated(Date cratedDated) {
+        this.cratedDated = cratedDated;
+    }
+
+    public Date getModifiedDat() {
+        return modifiedDat;
+    }
+
+    public void setModifiedDat(Date modifiedDat) {
+        this.modifiedDat = modifiedDat;
     }
 }

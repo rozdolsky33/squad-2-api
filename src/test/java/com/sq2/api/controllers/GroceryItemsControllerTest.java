@@ -126,7 +126,6 @@ class GroceryItemsControllerTest {
         itemRequestModel.setUserName("Jeff");
         itemRequestModel.setItemName("Hot Dogs");
         itemRequestModel.setQuantity(33);
-        itemRequestModel.setTargetDate(new Date());
 
         return itemRequestModel;
     }

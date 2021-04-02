@@ -1,5 +1,8 @@
 package com.sq2.api.ententies;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,10 +14,13 @@ public class ItemsListEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private String name;
+    private String listName;
+    @CreationTimestamp
     private Date cratedDated;
+    @UpdateTimestamp
     private Date modifiedDate;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
+    @JoinColumn(name = "item_entity_id")
     private List<ItemEntity> itemsList;
 
     public ItemsListEntity() {
@@ -28,12 +34,12 @@ public class ItemsListEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getListName() {
+        return listName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setListName(String name) {
+        this.listName = name;
     }
 
     public Date getCratedDated() {
@@ -56,7 +62,7 @@ public class ItemsListEntity {
         return itemsList;
     }
 
-    public void setItemsList(List<ItemEntity> itemsList) {
-        this.itemsList = itemsList;
+    public void setItemsList(ItemEntity item) {
+        this.itemsList.add(item);
     }
 }
