@@ -6,6 +6,8 @@ import com.sq2.api.repository.ItemsListRepository;
 import com.sq2.api.repository.ItemsRepository;
 import com.sq2.api.service.ItemsListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.Iterator;
@@ -46,8 +48,13 @@ public class ItemsListServiceImpl implements ItemsListService {
     @Override
     public void deleteItemFromTheListById(int listId, int itemId) {
 
-        if( itemsListRepository.findById(itemId).isPresent()) {
+        if( itemsListRepository.findById(listId).isPresent()) {
             itemsRepository.deleteById(itemId);
         }
+    }
+
+    @Override
+    public Page<ItemsListEntity> findAllItemLists(int pageNumber, int numberOfElementsPerPage) {
+        return itemsListRepository.findAll(PageRequest.of(pageNumber, numberOfElementsPerPage));
     }
 }

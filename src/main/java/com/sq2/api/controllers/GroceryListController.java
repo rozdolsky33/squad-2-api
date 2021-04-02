@@ -48,4 +48,10 @@ public class GroceryListController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping
+    public ResponseEntity<?>getAllGroceryLists(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
+                                               @RequestParam(value = "numberOfElementsPerPage", defaultValue = "10") int numberOfElementsPerPage){
+        return new ResponseEntity<>(itemsListService.findAllItemLists(pageNumber, numberOfElementsPerPage), HttpStatus.OK);
+    }
+
 }
