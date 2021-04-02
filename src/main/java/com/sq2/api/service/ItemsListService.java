@@ -11,4 +11,5 @@ public interface ItemsListService {
     ItemsListEntity addItemToTheGroceryListById(int id, ItemEntity itemEntity);
     void deleteItemFromTheListById(int listId, int itemId);
     Page<ItemsListEntity>findAllItemLists(int pageNumber, int numberOfElementsPerPage);
+    ItemsListEntity findListByListName(String listName);
 }

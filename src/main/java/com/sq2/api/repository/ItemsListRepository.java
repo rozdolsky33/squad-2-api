@@ -5,4 +5,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface ItemsListRepository extends PagingAndSortingRepository<ItemsListEntity, Integer> {
 
+    ItemsListEntity findItemsListEntityByListName(String name);
 }

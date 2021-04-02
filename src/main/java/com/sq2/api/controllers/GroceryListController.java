@@ -49,9 +49,13 @@ public class GroceryListController {
     }
 
     @GetMapping
-    public ResponseEntity<?>getAllGroceryLists(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber,
-                                               @RequestParam(value = "numberOfElementsPerPage", defaultValue = "10") int numberOfElementsPerPage){
+    public ResponseEntity<?>getAllGroceryLists(@RequestParam(value = "pageNumber", defaultValue = "0") int pageNumber, @RequestParam(value = "numberOfElementsPerPage", defaultValue = "10") int numberOfElementsPerPage){
         return new ResponseEntity<>(itemsListService.findAllItemLists(pageNumber, numberOfElementsPerPage), HttpStatus.OK);
+    }
+
+    @GetMapping("/name")
+    public ResponseEntity<?>getListByListName(@RequestParam String name){
+        return new ResponseEntity<>(itemsListService.findListByListName(name), HttpStatus.OK);
     }
 
 }

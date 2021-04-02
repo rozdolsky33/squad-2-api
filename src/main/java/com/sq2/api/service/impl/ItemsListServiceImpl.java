@@ -10,9 +10,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.Iterator;
-import java.util.Optional;
-
 @Service
 public class ItemsListServiceImpl implements ItemsListService {
 
@@ -56,5 +53,10 @@ public class ItemsListServiceImpl implements ItemsListService {
     @Override
     public Page<ItemsListEntity> findAllItemLists(int pageNumber, int numberOfElementsPerPage) {
         return itemsListRepository.findAll(PageRequest.of(pageNumber, numberOfElementsPerPage));
+    }
+
+    @Override
+    public ItemsListEntity findListByListName(String listName) {
+        return itemsListRepository.findItemsListEntityByListName(listName);
     }
 }
