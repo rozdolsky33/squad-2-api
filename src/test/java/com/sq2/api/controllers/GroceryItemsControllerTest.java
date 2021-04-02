@@ -1,7 +1,7 @@
 package com.sq2.api.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sq2.api.ententies.Item;
+import com.sq2.api.ententies.ItemEntity;
 import com.sq2.api.requests.ItemRequestModel;
 import com.sq2.api.service.ItemsService;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,8 +30,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(GroceryListController.class)
-class GroceryListControllerTest {
+@WebMvcTest(GroceryItemsController.class)
+class GroceryItemsControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -43,12 +43,12 @@ class GroceryListControllerTest {
 
     private ModelMapper modelMapper;
 
-    private Item itemEntity;
+    private ItemEntity itemEntity;
 
     private ItemRequestModel itemRequestModel;
 
     @Captor
-    private ArgumentCaptor<Item> requestModelArgumentCaptor;
+    private ArgumentCaptor<ItemEntity> requestModelArgumentCaptor;
 
     private String baseUri = "/api/v1/grocery-items";
 
@@ -57,7 +57,7 @@ class GroceryListControllerTest {
         this.modelMapper = new ModelMapper();
         this.objectMapper = new ObjectMapper();
         this.itemRequestModel = createItem();
-        this.itemEntity = modelMapper.map(itemRequestModel, Item.class);
+        this.itemEntity = modelMapper.map(itemRequestModel, ItemEntity.class);
         itemEntity.setId(1);
 
 
@@ -103,15 +103,15 @@ class GroceryListControllerTest {
     @Test
     void getAllGroceryItems() throws Exception{
         ItemRequestModel itemRequestModel1 = createItem();
-        Item item1 = modelMapper.map(itemRequestModel1, Item.class);
-        item1.setId(11);
+        ItemEntity itemEntity1 = modelMapper.map(itemRequestModel1, ItemEntity.class);
+        itemEntity1.setId(11);
         ItemRequestModel itemRequestModel2 = createItem();
-        Item item2 = modelMapper.map(itemRequestModel2, Item.class);
-        item2.setId(33);
+        ItemEntity itemEntity2 = modelMapper.map(itemRequestModel2, ItemEntity.class);
+        itemEntity2.setId(33);
 
-        List<Item> myTestList = new ArrayList<>();
-        myTestList.add(item1);
-        myTestList.add(item2);
+        List<ItemEntity> myTestList = new ArrayList<>();
+        myTestList.add(itemEntity1);
+        myTestList.add(itemEntity2);
         when(itemsService.getAllItems()).thenReturn(myTestList);
 
         this.mockMvc.perform(get(baseUri).header(HttpHeaders.ACCEPT, MediaType.APPLICATION_JSON_VALUE))

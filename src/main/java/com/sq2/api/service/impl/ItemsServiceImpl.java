@@ -1,6 +1,6 @@
 package com.sq2.api.service.impl;
 
-import com.sq2.api.ententies.Item;
+import com.sq2.api.ententies.ItemEntity;
 import com.sq2.api.repository.ItemsRepository;
 import com.sq2.api.service.ItemsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,25 +19,25 @@ public class ItemsServiceImpl implements ItemsService {
     }
 
     @Override
-    public List<Item> getAllItems() {
+    public List<ItemEntity> getAllItems() {
         return itemsRepository.findAll();
     }
 
     @Override
-    public Item saveItem(Item item) {
-        return itemsRepository.save(item);
+    public ItemEntity saveItem(ItemEntity itemEntity) {
+        return itemsRepository.save(itemEntity);
     }
 
     @Override
-    public Item updateItemById(int id, Item item) {
+    public ItemEntity updateItemById(int id, ItemEntity itemEntity) {
 
-        Item itemToUpdate = itemsRepository.findById(id).get();
-        itemToUpdate.setItemName(item.getItemName());
-        itemToUpdate.setQuantity(item.getQuantity());
-        itemToUpdate.setTargetDate(item.getTargetDate());
-        itemToUpdate.setUserName(item.getUserName());
+        ItemEntity itemEntityToUpdate = itemsRepository.findById(id).get();
+        itemEntityToUpdate.setItemName(itemEntity.getItemName());
+        itemEntityToUpdate.setQuantity(itemEntity.getQuantity());
+        itemEntityToUpdate.setTargetDate(itemEntity.getTargetDate());
+        itemEntityToUpdate.setUserName(itemEntity.getUserName());
 
-        return itemsRepository.save(itemToUpdate);
+        return itemsRepository.save(itemEntityToUpdate);
     }
 
     @Override

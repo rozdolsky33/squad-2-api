@@ -1,15 +1,15 @@
 package com.sq2.api.service;
 
-import com.sq2.api.ententies.Item;
+import com.sq2.api.ententies.ItemEntity;
 
 
 import java.util.List;
 
 public interface ItemsService {
 
-    List<Item> getAllItems();
-    Item saveItem(Item item);
-    Item updateItemById(int id, Item item);
+    List<ItemEntity> getAllItems();
+    ItemEntity saveItem(ItemEntity itemEntity);
+    ItemEntity updateItemById(int id, ItemEntity itemEntity);
     void deleteItemById(int id);
 
 

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity
-public class Item {
+public class ItemEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +18,7 @@ public class Item {
     private int quantity;
 
 
-    public Item() {
+    public ItemEntity() {
     }
 
     public int getId() {
