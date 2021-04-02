@@ -1,6 +1,8 @@
 package com.sq2.api.ententies;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -20,6 +22,7 @@ public class ItemsListEntity {
     @UpdateTimestamp
     private Date modifiedDate;
     @OneToMany(cascade = CascadeType.ALL , orphanRemoval = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "item_entity_id")
     private List<ItemEntity> itemsList;
 
@@ -64,5 +67,8 @@ public class ItemsListEntity {
 
     public void setItemsList(ItemEntity item) {
         this.itemsList.add(item);
+    }
+    public void removeItemFromTheList(ItemEntity item){
+        this.itemsList.remove(item);
     }
 }

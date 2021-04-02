@@ -8,4 +8,5 @@ public interface ItemsListService {
     ItemsListEntity createGroceryList(String name);
     ItemsListEntity findGroceryListById(int id);
     ItemsListEntity addItemToTheGroceryListById(int id, ItemEntity itemEntity);
+    void deleteItemFromTheListById(int listId, int itemId);
 }

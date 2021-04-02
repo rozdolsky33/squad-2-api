@@ -10,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
 @RequestMapping("/api/v1/grocery-list")
 public class GroceryListController {
@@ -29,19 +28,24 @@ public class GroceryListController {
         return new ResponseEntity<>(groceryList, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?>getGroceryListById(@PathVariable String id){
-        ItemsListEntity returnValue = itemsListService.findGroceryListById(Integer.parseInt(id));
+    @GetMapping("/{list-id}")
+    public ResponseEntity<?>getGroceryListById(@PathVariable("list-id") int listId){
+        ItemsListEntity returnValue = itemsListService.findGroceryListById(listId);
         return new ResponseEntity<>(returnValue, HttpStatus.OK);
     }
-    @PutMapping("/{id}")
-    public ResponseEntity<?>addItemToTheListById(@PathVariable String id, @RequestBody ItemRequestModel itemRequestModel){
+    @PutMapping("/{list-id}")
+    public ResponseEntity<?>addItemToTheListById(@PathVariable("list-id") int listId, @RequestBody ItemRequestModel itemRequestModel){
 
-        int listId = Integer.parseInt(id);
         ModelMapper modelMapper = new ModelMapper();
         ItemEntity saveItem = modelMapper.map(itemRequestModel, ItemEntity.class);
         ItemsListEntity returnValue = itemsListService.addItemToTheGroceryListById(listId, saveItem);
 
         return new ResponseEntity<>(returnValue, HttpStatus.OK);
     }
+    @DeleteMapping("/{list-id}/item/{item-id}")
+    public ResponseEntity<?>deleteItemFromTheList(@PathVariable("list-id") int listId, @PathVariable("item-id") int itemId){
+        itemsListService.deleteItemFromTheListById(listId, itemId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
 }
