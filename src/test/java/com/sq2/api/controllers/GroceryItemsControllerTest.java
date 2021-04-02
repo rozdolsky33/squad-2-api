@@ -76,7 +76,6 @@ class GroceryItemsControllerTest {
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.itemName", is("Hot Dogs")))
                 .andExpect(jsonPath("$.quantity", is(33)))
-                .andExpect(jsonPath("$.targetDate", is(notNullValue())))
                 .andExpect(jsonPath("$.userName", is("Jeff")));
     }
 
@@ -91,7 +90,6 @@ class GroceryItemsControllerTest {
                 .andExpect(jsonPath("$.id", is(1)))
                 .andExpect(jsonPath("$.itemName", is("Hot Dogs")))
                 .andExpect(jsonPath("$.quantity", is(33)))
-                .andExpect(jsonPath("$.targetDate", is(notNullValue())))
                 .andExpect(jsonPath("$.userName", is("Jeff")));
     }
 
